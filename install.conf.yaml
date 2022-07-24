@@ -9,6 +9,7 @@
     ~/.zshrc: .zshrc
     ~/.config/nvim: nvim
     ~/.gitconfig: .gitconfig
+    ~/.ideavimrc: .ideavimrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

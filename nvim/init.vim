@@ -1,7 +1,9 @@
 let mapleader=","
 
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>N :NERDTreeToggle<CR>
+
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 call plug#begin()
   Plug 'ambv/black'
@@ -34,7 +36,16 @@ call plug#begin()
   " Snippets
   Plug 'SirVer/ultisnips'
 
+  Plug 'stephpy/vim-yaml'
+  Plug 'vim-test/vim-test'
+  Plug 'folke/zen-mode.nvim'
+  Plug 'voldikss/vim-floaterm'
+  Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
 call plug#end()
+
+lua require('bpeters')
+lua require('config')
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -44,8 +55,14 @@ let g:rainbow_active = 1
 
 set relativenumber
 set rtp+=/opt/homebrew/opt/fzf
+set iskeyword-=_
 
 colorscheme nord
+
+" Floaterm settings
+nnoremap <silent> <leader>sn :FloatermNew<CR>
+nnoremap <silent> <leader>S :FloatermToggle<CR>
+nnoremap <silent> <leader>sp :FloatermNew ipython<CR>
 
 filetype plugin on
 
@@ -81,6 +98,8 @@ nmap <Leader>dh <Plug>VimspectorStepOut
 nmap <Leader>dl <Plug>VimspectorStepInto
 nmap <Leader>dj <Plug>VimspectorStepOver
 
+nmap <Leader>dG :lua require('config.vimspector').generate_debug_profile()<cr>
+
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -90,6 +109,19 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Open init.vim
 nnoremap <Leader>vc :e $MYVIMRC<cr>
 nnoremap <Leader>vs :so $MYVIMRC<cr>
+
+" Testing keymaps
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+" Set vim-test exec environment
+let test#strategy = "floaterm"
+
+" Zen mode
+nnoremap <silent><leader>z <cmd> :ZenMode<CR>
 
 " Hide tmux status bar when Vim opens
 autocmd VimEnter,VimLeave * silent !tmux set status

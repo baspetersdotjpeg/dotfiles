@@ -1,0 +1,146 @@
+"Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'tommcdo/vim-exchange'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'kana/vim-textobj-entire'
+
+let mapleader=","
+
+" Settings for easymotion
+"map <Leader> <Plug>(easymotion-prefix)
+"map <leader>F <Plug>(easymotion-s)
+"map <leader>f <Plug>(easymotion-f)
+"map <leader>w <Plug>(easymtoion-w)
+
+" Show terminal
+map <leader>S <Action>(ActivateTerminalToolWindow)<CR>
+
+set incsearch
+set ignorecase
+set smartcase
+
+let mapleader=","
+
+nnoremap L $
+nnoremap H ^
+
+nnoremap <leader>e :action SearchEverywhere<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>s :action FileStructurePopup<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+nnoremap F :action RenameFile<CR> 
+
+
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap <leader>a :action GotoAction<CR>
+vnoremap <leader>a :action GotoAction<CR>
+
+"nnoremap <C-`> :action ActivateTerminalToolWindow<CR>
+" Manage ideavim config file
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
+nnoremap <leader>vc :edit ~/.ideavimrc<CR>
+
+nnoremap <leader>ws :action SplitHorizontally<CR>
+nnoremap <leader>wv :action SplitVertically<CR>
+nnoremap <leader>wq :action Unsplit<CR>
+nnoremap <leader>ww :action MoveEditorToOppositeTabGroup<CR>
+
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <leader>n :action NextWindow<CR>
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap <leader>qa :action CloseAllEditors<CR>
+
+nnoremap <leader>ee :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <leader>en :action EditSourceInNewWindow<CR>
+
+nnoremap <leader><leader> :action NextSplitter<CR>
+nnoremap <leader>h <c-w>h
+nnoremap <leader>k <c-w>k
+nnoremap <leader>j <c-w>j
+nnoremap <leader>l <c-w>l
+
+set ideajoin
+set idearefactormode=keep
+
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap [ :action MethodUp<CR>
+nnoremap ] :action MethodDown<CR>
+
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+nnoremap <Leader>=  :action ReformatCode<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+
+nnoremap <c-r> :action RecentFiles<CR>
+
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+
+set incsearch
+
+nnoremap <c-/> :action FindInPath<CR>
+nnoremap <c-a> :action GotoAction<CR>
+nnoremap <c-f> :action GotoFile<CR>
+
+nnoremap <leader>s :action GotoRelated<CR>
+nnoremap <leader>h :action CallHierarchy<CR>
+nnoremap <leader>b :action ShowNavBar<CR>
+nnoremap <c-s> :action FileStructurePopup<CR>
+nnoremap <c-o> :action GotoSymbol<CR>
+nnoremap gc :action GotoClass<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap <leader>gb :action JumpToLastChange<CR>
+
+nnoremap <leader>fu :action FindUsages<CR>
+
+nnoremap <c-i> :action Back<CR>
+nnoremap <c-o> :action Forward<CR>
+
+nnoremap <c-p> :action JumpToLastWindow<CR>
+nnoremap <c-x> :action HideAllWindows<CR>
+
+nnoremap <leader>rr :action Run<CR>
+nnoremap <leader>rc :action RunClass<CR>
+nnoremap <leader>rf :action ChooseRunConfiguration<CR>
+nnoremap <leader>rt :action ActivateRunToolWindow<CR>
+nnoremap <leader>ru :action Rerun<CR>
+
+nnoremap <leader>rF :action RerunFailedTests<CR>
+
+nnoremap <leader>dt :action ToggleLineBreakpoint<CR>
+nnoremap <leader>df :action ChooseDebugConfiguration<CR>
+"nnoremap <leader>dc :action DebugClass<CR>
+nnoremap <leader>dT :action Debugger.RemoveAllBreakpoints<CR>
+"nnoremap <leader>dd :action ContextDebug<CR>
+nnoremap <leader>dd :action Debug<CR>
+nnoremap <leader>dc :action Resume<CR>
+nnoremap <leader>dn :action ActivateDebugToolWindow<CR>
+nnoremap <leader>de :action Stop<CR>
+
+nnoremap <leader>N :action ActivateProjectToolWindow<CR>
+nnoremap <leader>C :action NewClass<CR>
+
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+set relativenumber
+
+
+
+set visualbell

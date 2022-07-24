@@ -1,5 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc. Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -16,6 +15,7 @@ export ZSH="/Users/bpeters/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Nord them dir colors
@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/opt/homebrew/opt/python@3.8/bin:$PATH"
+export PATH="/usr/local/bin/virtualenv:$PATH"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -126,23 +127,16 @@ export PATH=/usr/local/share/python:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/src
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export VIRTUALENVWRAPPER_VIRTUALENV=/opt/homebrew/bin/virtualenv
 source /opt/homebrew/bin/virtualenvwrapper.sh
 
 # Compiler flags to support openssl-dependent packages
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
-# Helper scripts to connect to SQL instances
-function prod_db_proxy () {
- ~/go/bin/cloud_sql_proxy -instances=prod-env-1337420:asia-northeast1:prod-db-instance=tcp:0.0.0.0:5432
-}
-function staging_db_proxy() {
- ~/go/bin/cloud_sql_proxy -instances=staging-env-1337420:asia-northeast1:staging-db-instance=tcp:0.0.0.0:5432
-}
-
 # Terraform aliases
-alias tf=/opt/homebrew/bin/terraform
+alias tf="terraform"
+alias tg="terragrunt"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -162,3 +156,30 @@ alias v="arch -arm64 nvim"
 alias vrc="nvim ~/.config/nvim/init.vim"
 alias trc="nvim ~/.tmux.conf"
 alias zrc="nvim ~/.zshrc"
+alias python="python3"
+alias g="git"
+
+alias luamake=/Users/bpeters/tools/lua-language-server/3rd/luamake/luamake
+
+# Created by `pipx` on 2022-05-19 07:56:16
+export PATH="$PATH:/Users/bpeters/Library/Python/3.9/bin"
+
+# Created by `pipx` on 2022-05-19 07:56:17
+export PATH="$PATH:/Users/bpeters/.local/bin"
+
+# Set CA certificate locations
+CERT_PATH=/opt/homebrew/etc/openssl@3/cert.pem
+export SSL_CERT_FILE=${CERT_PATH}
+export REQUESTS_CA_BUNDLE=${CERT_PATH}
+
+[ -s "/Users/bpeters/.web3j/source.sh" ] && source "/Users/bpeters/.web3j/source.sh"
+
+# Needed for Git GPG signatures
+export GPG_TTY=$(tty)
+
+# AWS cli configuration
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+complete -C '/usr/local/bin/aws_completer' aws
+

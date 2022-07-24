@@ -2,3 +2,16 @@
 	co = checkout
 	cob = checkout -b 
 	st = status
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    c = commit -s
+    b = branch
+    psu = push --set-upstream
+    p = push
+[user]
+	signingkey = 4A0D7F7F561CEDC8
+	name = Bas Peters
+	email = bas.peters@imc.com
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
